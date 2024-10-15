@@ -1,9 +1,7 @@
-import React from 'react'
+import React from 'react';
 
-const Deckofcards  = () => {
-  return (
-    <div>Deckofcards API</div>
-  )
-}
+const Deckofcards = () => {
+  return <div>Deckofcards API</div>;
+};
 
-export default Deckofcards 
+export default Deckofcards;

@@ -1,9 +1,7 @@
-import React from 'react'
+import React from 'react';
 
 const Swiper = () => {
-  return (
-    <div>Swiper API</div>
-  )
-}
+  return <div>Swiper API</div>;
+};
 
-export default Swiper
+export default Swiper;

@@ -1,0 +1,17 @@
+# Node modules folder
+node_modules/
+
+# Build or output folder (if applicable)
+build/
+dist/
+
+# Public folder, which often contains static assets
+public/
+
+# Environmental or config files (if you don't want Prettier to format them)
+*.env
+package-lock.json
+yarn.lock
+
+# Any other specific files or folders you want to exclude
+coverage/

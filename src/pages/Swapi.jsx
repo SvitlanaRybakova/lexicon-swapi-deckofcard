@@ -1,18 +1,19 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import { useQuery } from '@tanstack/react-query';
 import { getPeople } from '../services';
 import ErrorAlert from '../components/ErrorAlert';
 import Loader from '../components/Loader';
 import CardItem from '../components/CardItem';
+import Pagination from '../components/Pagination';
 
 const Swapi = () => {
-  const { data, error, isLoading, status } = useQuery({
-    queryKey: ['swapi_creatures'],
-    queryFn: () => getPeople(),
-  });
+  const [currentPage, setCurrentPage] = useState(1);
 
-  console.log('data', data);
+  const { data, error, isLoading, status, isPreviousData } = useQuery({
+    queryKey: ['swapi_creatures', currentPage],
+    queryFn: () => getPeople(currentPage),
+  });
 
   return (
     <div className="container mx-auto">
@@ -20,7 +21,7 @@ const Swapi = () => {
       {isLoading && <Loader />}
       {data?.length === 0 && <InfoAlert message={'No matches'} />}
       <div className="align-center flex flex-wrap justify-center gap-8">
-        {data?.map((creature) => (
+        {data?.results?.map((creature) => (
           <div key={uuidv4()}>
             <CardItem
               name={creature.name}
@@ -33,6 +34,13 @@ const Swapi = () => {
           </div>
         ))}
       </div>
+
+      <Pagination
+        currentPage={currentPage}
+        setCurrentPage={setCurrentPage}
+        isPreviousData={isPreviousData}
+        hasMore={data?.next}
+      />
     </div>
   );
 };

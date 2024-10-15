@@ -1,20 +1,22 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import { routes } from '../routes';
 
 const Navbar = () => {
   return (
-    <div class="navbar bg-base-100">
-      <div class="flex-1">
-        <a class="btn btn-ghost text-xl">APIs</a>
+    <div className="navbar bg-base-100">
+      <div className="flex-1">
+        <a className="btn btn-ghost text-xl">APIs</a>
       </div>
-      <div class="flex-none">
-        <ul class="menu menu-horizontal px-1">
-          <li>
-            <NavLink to="/">SwiperAPI</NavLink>
-          </li>
-          <li>
-            <NavLink to="deckocard">DeckofcardsAPI</NavLink>
-          </li>
+      <div className="flex-none">
+        <ul className="menu menu-horizontal px-1">
+          {routes.map((route) => (
+            <li key={route.id}>
+              <NavLink to={route.path} className={({ isActive }) => (isActive ? 'active' : '')}>
+                {route.name}
+              </NavLink>
+            </li>
+          ))}
         </ul>
       </div>
     </div>

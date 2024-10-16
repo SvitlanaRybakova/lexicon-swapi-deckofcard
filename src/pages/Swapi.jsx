@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import { useQuery } from '@tanstack/react-query';
-import { getPeople } from '../services';
+import { getPeople } from '../api/swapi';
 import ErrorAlert from '../components/ErrorAlert';
 import InfoAlert from '../components/InfoAlert';
 import Loader from '../components/Loader';

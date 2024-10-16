@@ -13,8 +13,6 @@ const Deckofcards = () => {
 
   if (status === 'error') return <ErrorAlert message={error.message} />;
 
-  console.log(data);
-
   return (
     <div>
       <button
